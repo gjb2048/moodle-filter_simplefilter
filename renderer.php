@@ -17,7 +17,7 @@
 /**
  * Functions for inserting and displaying content
  * @package    filter
- * @subpackage simplemodal
+ * @subpackage simplefilter
  * @copyright  2017 Richard Jones (https://richardnz.net/)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,21 +25,21 @@
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Custom renderer class for filter_simplemodal
+ * Custom renderer class for filter_simplefilter
  * @copyright  2017 Richard Jones (https://richardnz.net/)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class filter_simplemodal_renderer extends plugin_renderer_base {
+class filter_simplefilter_renderer extends plugin_renderer_base {
     /**
      * This function returns content
-     * @param string $linktext the text for the returned link
-     * @return string the html required to display the content
+     * @param string $content the text for the collabsible.
+     * @return string the html required to display the content.
      */
     public function get_content($content) {
-        $this->page->requires->js_call_amd('filter_simplemodal/show_content', 
-                'init', array($content));
-        $button = html_writer::tag('button', 
-                get_string('button_label','filter_simplemodal'));
-        return html_writer::div($button,'filter_simplemodal_content');
+
+        $data = new stdClass();
+        $data->buttontext = 'Click me';
+        $data->content = $content;
+        return $this->render_from_template('filter_simplefilter/panel', $data);
     }
 }

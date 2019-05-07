@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * filter simplemodal admin settings and defaults
+ * filter simplefilter admin settings and defaults
  *
  * @package    filter
- * @subpackage simplemodal
+ * @subpackage simplefilter
  * @copyright  2017 Richard Jones (@link https://richardnz.net/)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,36 +28,24 @@ defined('MOODLE_INTERNAL') || die;
 if ($ADMIN->fulltree) {
 
     // default values for filter.php
-    $START_TAG = '{{CONTENT:';
+    $START_TAG = '{{NEWTEXT:';
     $END_TAG = '}}';
-    $HEIGHT = 600;
-    $WIDTH = 450;
 
     // language strings
-    $heading = get_string('settings_heading', 'filter_simplemodal');
-    $description = get_string('settings_desc', 'filter_simplemodal');
+    $heading = get_string('settings_heading', 'filter_simplefilter');
+    $description = get_string('settings_desc', 'filter_simplefilter');
 
-    $settings->add(new admin_setting_heading('simplemodalsettings', 
+    $settings->add(new admin_setting_heading('simplefiltersettings',
             $heading, $description));
 
-    
-    $settings->add(new admin_setting_configtext('filter_simplemodal/starttag',
-            get_string('settings_start_tag', 'filter_simplemodal'),
-            get_string('settings_start_tag_desc', 'filter_simplemodal'),
+
+    $settings->add(new admin_setting_configtext('filter_simplefilter/starttag',
+            get_string('settings_start_tag', 'filter_simplefilter'),
+            get_string('settings_start_tag_desc', 'filter_simplefilter'),
             $START_TAG, PARAM_TEXT));
-    
-    $settings->add(new admin_setting_configtext('filter_simplemodal/endtag',
-            get_string('settings_end_tag', 'filter_simplemodal'),
-            get_string('settings_end_tag_desc', 'filter_simplemodal'), 
+
+    $settings->add(new admin_setting_configtext('filter_simplefilter/endtag',
+            get_string('settings_end_tag', 'filter_simplefilter'),
+            get_string('settings_end_tag_desc', 'filter_simplefilter'),
             $END_TAG, PARAM_TEXT));
-    
-    $settings->add(new admin_setting_configtext('filter_simplemodal/height',
-            get_string('settings_height', 'filter_simplemodal'),
-            get_string('settings_height_desc', 'filter_simplemodal'), 
-            $HEIGHT, PARAM_INT));
-    
-    $settings->add(new admin_setting_configtext('filter_simplemodal/width',
-            get_string('settings_width', 'filter_simplemodal'),
-            get_string('settings_width_desc', 'filter_simplemodal'), 
-            $WIDTH, PARAM_INT));
 }

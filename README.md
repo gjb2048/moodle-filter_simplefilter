@@ -1,6 +1,6 @@
 Source code repository
 =====================
-https://github.com/richardjonesnz/moodle_filter_simplemodal
+https://github.com/richardjonesnz/moodle_filter_simplefilter
 
 Short Description
 =================
@@ -8,11 +8,10 @@ A template for filters - used in the MoodleBites for Developers Level 1 course r
 
 Long Description
 ===============
-A text filter template.  The filter interprets text marked 
-with opening and closing tags {{CONTENT:arbitrary content}} 
-and then shows it in an alert box via an AMD module.
-
-The text is replaced by a button with a fixed label.
+A text filter template.  The filter interprets text marked
+with opening and closing tags {{NEWTEXT:arbitrary content}}
+and then shows it in a Bootstrap collabsible operated by a
+button with a fixed text label.
 
 Version
 =======
@@ -20,49 +19,21 @@ Version
 
 Configuration
 =============
-The tags can be configured.  It has height and width config 
-but these are unused.
-
-Documentation
-=============
-Thanks to Justin Hunt.
-
-Download the zip or clone the repo.
-
-Edit all the files in this directory and its subdirectories and change
-all the instances of the string "simplemodel" to your atto plugin name
-(eg "widget"). Don't do this manually. Use an IDE or a programmers text
-editor like TextWrangler (mac) or Notepad++ (pc)
-  
-If you are using Linux, you could also use the following command
-$ find . -type f -exec sed -i 's/simplemodal/widget/g' {} \;
-
-On a mac, use:
-$ find . -type f -exec sed -i '' 's/simplemodal/widget/g' {} \;
-
-Rename the file lang/en/filter_simplemodal.php to lang/en/filter_widget.php
-where "widget" is the name of your text filter plugin
-
-Place the plugin folder folder into the /filter folder of the moodle directory.
-
-Modify version.php and set the initial version of your module.
-
-Visit Settings > Site Administration > Notifications, and let Moodle guide you through the install.
+The tags can be configured.
 
 Known bugs, Todos, Suggestions
 ==============================
-You can make the button text configurable if you like.
-You could develop it into a model panel that shows interesting things.
-You can adapt it to multiple buttons - but would need an id for each one.
+You can make the button text configurable by having two elements
+between the tags. EG {{NEWTEXT:buttontext|content}}
 
 Questions and suggestions
 =========================
 Richard Jones https://richardnz.net richardnz@outlook.com.
 Karapiro Village
 New Zealand
-November 2017
+November 2019
 
 Moodle
 ======
-Tested in 3.4
+Tested in 3.6
 Tested on Chrome

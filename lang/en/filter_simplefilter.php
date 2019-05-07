@@ -13,21 +13,23 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
 /**
- * Version details
+ * Strings for component 'filter_simplefilter', language 'en'
  *
  * @package    filter
  * @subpackage simplefilter
- * @copyright  2017 Richard Jones (https://richardnz.net/)
+ * @copyright  2017 Richard Jones https://richardnz.net
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- *
  */
 
-defined('MOODLE_INTERNAL') || die();
+$string['filtername'] = 'Simple filter';
 
-$plugin->version   = 2019050705;
-$plugin->requires  = 2017051500;
-$plugin->component = 'filter_simplefilter';
-$plugin->maturity = MATURITY_BETA;
-$plugin->release = 'v1.0'; // updated settings
+// Settings strings
+$string['settings_heading'] = 'Insert content settings';
+$string['settings_desc'] = 'Change the settings for this filter.';
+$string['settings_start_tag'] = 'Start tag';
+$string['settings_end_tag'] = 'End tag';
+$string['settings_start_tag_desc'] = 'Tag that marks the start of the content';
+$string['settings_end_tag_desc'] = 'Tag that marks the end of the content';
+$string['button_label'] = "Click me";
+// size of modal

@@ -18,7 +18,7 @@
  * Basic email protection filter.
  *
  * @package    filter
- * @subpackage simplemodal
+ * @subpackage simplefilter
  * @copyright  2017 Richard Jones (https://richardnz.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,7 +29,7 @@ defined('MOODLE_INTERNAL') || die();
  * replaces them with specified user-defined content.
  * @see filter_manager::apply_filter_chain()
  */
-class filter_simplemodal extends moodle_text_filter {
+class filter_simplefilter extends moodle_text_filter {
     /**
      * This function looks for tags in Moodle text and
      * replaces them with questions from the question bank.
@@ -50,7 +50,7 @@ class filter_simplemodal extends moodle_text_filter {
 
         // Admin might need to change these at some point - eg to double curlies,
         // therefore defined in {@link settings.php} with default values
-        $def_config = get_config('filter_simplemodal');
+        $def_config = get_config('filter_simplefilter');
         $starttag = $def_config->starttag;
         $endtag = $def_config->endtag;
 
@@ -59,18 +59,12 @@ class filter_simplemodal extends moodle_text_filter {
             return $text;
         }
 
-        $renderer = $PAGE->get_renderer('filter_simplemodal');
-        // Check our context and get the course id
-        $coursectx = $this->context->get_course_context(false);
-        if (!$coursectx) {
-            return $text;
-        }
-        $courseid = $coursectx->instanceid;
+        $renderer = $PAGE->get_renderer('filter_simplefilter');
 
         // There may be a tag in here somewhere so continue
         // Get the contents and positions in the text and call the
         // renderer to deal with them
-        $text = filter_simplemodal_insert_content($text, $starttag, $endtag, $courseid, $renderer);
+        $text = filter_simplefilter_insert_content($text, $starttag, $endtag, $renderer);
         return $text;
     }
 }
@@ -85,21 +79,24 @@ class filter_simplemodal extends moodle_text_filter {
  * @param renderer $renderer - filter renderer
  * @return a replacement text string
  */
-function filter_simplemodal_insert_content($str, $starttag, $endtag, $courseid, $renderer) {
+function filter_simplefilter_insert_content($str, $starttag, $endtag,
+        $renderer) {
 
     $newstring = $str;
     // While we have the start tag in the text
     while (strpos($newstring, $starttag) !== false) {
         $initpos = strpos($newstring, $starttag);
         if ($initpos !== false) {
-            $pos = $initpos + strlen($starttag);  // get up to string
+            // Find the start of the string after the tag.
+            $pos = $initpos + strlen($starttag);
             $endpos = strpos($newstring, $endtag);
-            $content = substr($newstring, $pos, $endpos - $pos); // extract content
-            // Clean the string
+            // Extract the actual content between the tags.
+            $content = substr($newstring, $pos, $endpos - $pos);
+            // Clean the string.
             $content = filter_var($content, FILTER_SANITIZE_STRING);
-            $content = $renderer->get_content($content, $courseid);
-            // Update the text to replace the filtered string
-            $newstring = substr_replace($newstring, $content, $initpos,
+            // Get the required content.
+            $newcontent = $renderer->get_content($content);
+            $newstring = substr_replace($newstring, $newcontent, $initpos,
                     $endpos - $initpos + strlen($endtag));
             $initpos = $endpos + strlen($endtag);
         }
