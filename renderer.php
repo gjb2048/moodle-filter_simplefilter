@@ -38,7 +38,7 @@ class filter_simplefilter_renderer extends plugin_renderer_base {
     public function get_content($content) {
 
         $data = new stdClass();
-        $data->buttontext = 'Click me';
+        $data->buttontext = get_string('button_label', 'filter_simplefilter');
         $data->content = $content;
         return $this->render_from_template('filter_simplefilter/panel', $data);
     }
