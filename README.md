@@ -1,6 +1,6 @@
 Source code repository
 =====================
-https://github.com/richardjonesnz/moodle_filter_simplefilter
+https://github.com/richardjonesnz/moodle-filter_simplefilter
 
 Short Description
 =================
