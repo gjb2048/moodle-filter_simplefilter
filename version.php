@@ -26,7 +26,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2019050705;
+$plugin->version   = 2020022801;
 $plugin->requires  = 2017051500;
 $plugin->component = 'filter_simplefilter';
 $plugin->maturity = MATURITY_BETA;
