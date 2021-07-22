@@ -30,4 +30,4 @@ $plugin->version   = 2020022801;
 $plugin->requires  = 2017051500;
 $plugin->component = 'filter_simplefilter';
 $plugin->maturity = MATURITY_BETA;
-$plugin->release = 'v1.0'; // updated settings
+$plugin->release = 'v1.0'; // Updated settings.

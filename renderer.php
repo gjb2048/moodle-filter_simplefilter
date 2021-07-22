@@ -36,7 +36,6 @@ class filter_simplefilter_renderer extends plugin_renderer_base {
      * @return string the html required to display the content.
      */
     public function get_content($content) {
-
         $data = new stdClass();
         $data->buttontext = get_string('button_label', 'filter_simplefilter');
         $data->content = $content;

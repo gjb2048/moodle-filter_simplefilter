@@ -1,6 +1,7 @@
-Source code repository
-=====================
-https://github.com/richardjonesnz/moodle-filter_simplefilter
+Source code repositories
+========================
+Original: https://github.com/richardjonesnz/moodle-filter_simplefilter
+New     : https://github.com/gjb2048/moodle-filter_simplefilter
 
 Short Description
 =================
@@ -26,14 +27,7 @@ Known bugs, Todos, Suggestions
 You can make the button text configurable by having two elements
 between the tags. EG {{NEWTEXT:buttontext|content}}
 
-Questions and suggestions
-=========================
-Richard Jones https://richardnz.net richardnz@outlook.com.
-Karapiro Village
-New Zealand
-November 2019
-
 Moodle
 ======
-Tested in 3.6
+Tested in 3.11
 Tested on Chrome
