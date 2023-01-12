@@ -19,10 +19,9 @@
  * @package    filter
  * @subpackage simplefilter
  * @copyright  2017 Richard Jones (https://richardnz.net/)
+ * @copyright  2023 G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * Custom renderer class for filter_simplefilter

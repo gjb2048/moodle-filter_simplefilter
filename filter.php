@@ -20,10 +20,10 @@
  * @package    filter
  * @subpackage simplefilter
  * @copyright  2017 Richard Jones (https://richardnz.net)
+ * @copyright  2023 G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
 /**
  * This filter looks for content tags in Moodle text and
  * replaces them with specified user-defined content.
@@ -40,7 +40,7 @@ class filter_simplefilter extends moodle_text_filter {
      *
      * @return string text after processing
      */
-    function filter($text, array $options = array()) {
+    public function filter($text, array $options = array()) {
         global $PAGE;
 
         // Basic test to avoid work.
@@ -51,9 +51,9 @@ class filter_simplefilter extends moodle_text_filter {
 
         /* Admin might need to change these at some point - eg to double curlies,
            therefore defined in {@link settings.php} with default values. */
-        $def_config = get_config('filter_simplefilter');
-        $starttag = $def_config->starttag;
-        $endtag = $def_config->endtag;
+        $config = get_config('filter_simplefilter');
+        $starttag = $config->starttag;
+        $endtag = $config->endtag;
 
         // Do a quick check to see if we have a tag.
         if (core_text::strpos($text, $starttag) === false) {
@@ -70,9 +70,9 @@ class filter_simplefilter extends moodle_text_filter {
         return $text;
     }
 }
+
 /**
- *
- * function to replace filter text with button that opens content.
+ * Function to replace filter text with button that opens content.
  *
  * @param string $str text to be processed
  * @param string $starttag start tag pattern to be searched for

@@ -20,6 +20,7 @@
  * @package    filter
  * @subpackage simplefilter
  * @copyright  2017 Richard Jones (@link https://richardnz.net/)
+ * @copyright  2023 G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -27,8 +28,8 @@ defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
     // Default values for filter.php.
-    $START_TAG = '{{NEWTEXT:';
-    $END_TAG = '}}';
+    $starttag = '{{NEWTEXT:';
+    $endtag = '}}';
 
     // Language strings.
     $heading = get_string('settings_heading', 'filter_simplefilter');
@@ -40,10 +41,10 @@ if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_configtext('filter_simplefilter/starttag',
         get_string('settings_start_tag', 'filter_simplefilter'),
         get_string('settings_start_tag_desc', 'filter_simplefilter'),
-        $START_TAG, PARAM_TEXT));
+        $starttag, PARAM_TEXT));
 
     $settings->add(new admin_setting_configtext('filter_simplefilter/endtag',
         get_string('settings_end_tag', 'filter_simplefilter'),
         get_string('settings_end_tag_desc', 'filter_simplefilter'),
-        $END_TAG, PARAM_TEXT));
+        $endtag, PARAM_TEXT));
 }

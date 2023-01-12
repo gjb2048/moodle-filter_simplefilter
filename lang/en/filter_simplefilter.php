@@ -24,7 +24,7 @@
 
 $string['filtername'] = 'Simple filter';
 
-// Settings strings
+// Settings strings.
 $string['settings_heading'] = 'Insert content settings';
 $string['settings_desc'] = 'Change the settings for this filter.';
 $string['settings_start_tag'] = 'Start tag';
@@ -32,4 +32,3 @@ $string['settings_end_tag'] = 'End tag';
 $string['settings_start_tag_desc'] = 'Tag that marks the start of the content';
 $string['settings_end_tag_desc'] = 'Tag that marks the end of the content';
 $string['button_label'] = "Click me";
-// size of modal
