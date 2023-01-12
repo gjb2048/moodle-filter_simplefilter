@@ -26,13 +26,32 @@
     Data attributes required for JS:
     * none
 
+    Context variables required for this template:
+    * buttontext Button text.
+    * content Modal body content.
+
     Example data (json):
-        {
-        }
+    {
+        "buttontext": "Click me",
+        "content": "This is the information to insert into a panel"
+    }
 }}
-<p><button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filter_simplefilter_panel">{{buttontext}}</button></p>
-<div class="filter_simplefilter_content">
-  <div id="filter_simplefilter_panel" class="collapse">
-    {{content}}
-  </div>
+<p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#filter_simplefilter_panel">{{buttontext}}</button></p>
+<div class="modal fade" id="filter_simplefilter_panel" tabindex="-1" role="dialog" aria-labelledby="filter_simplefilter_panel_label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="filter_simplefilter_panel_label">The panel</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{content}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
