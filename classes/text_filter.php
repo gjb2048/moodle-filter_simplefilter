@@ -17,19 +17,22 @@
 /**
  * Simple example of a text filter.
  *
- * @package    filter
- * @subpackage simplefilter
+ * @package    filter_simplefilter
  * @copyright  2017 Richard Jones (https://richardnz.net)
- * @copyright  2023 G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}.
+ * @copyright  2025 G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+namespace filter_simplefilter;
+
+use core_text;
 
 /**
  * This filter looks for content tags in Moodle text and
  * replaces them with specified user-defined content.
  * @see filter_manager::apply_filter_chain()
  */
-class filter_simplefilter extends moodle_text_filter {
+class text_filter extends \moodle_text_filter {
     /**
      * This function looks for tags in Moodle text and
      * replaces them with questions from the question bank.
@@ -40,7 +43,7 @@ class filter_simplefilter extends moodle_text_filter {
      *
      * @return string text after processing
      */
-    public function filter($text, array $options = array()) {
+    public function filter($text, array $options = []) {
         global $PAGE;
 
         // Basic test to avoid work.
@@ -65,42 +68,42 @@ class filter_simplefilter extends moodle_text_filter {
         /* There may be a tag in here somewhere so continue
            Get the contents and positions in the text and call the
            renderer to deal with them. */
-        $text = filter_simplefilter_insert_content($text, $starttag, $endtag, $renderer);
+        $text = $this->insert_content($text, $starttag, $endtag, $renderer);
 
         return $text;
     }
-}
 
-/**
- * Function to replace filter text with button that opens content.
- *
- * @param string $str text to be processed
- * @param string $starttag start tag pattern to be searched for
- * @param string $endtag end tag for text to replace
- * @param renderer $renderer - filter renderer
- * @return a replacement text string
- */
-function filter_simplefilter_insert_content($str, $starttag, $endtag, $renderer) {
+    /**
+     * Method to replace filter text with button that opens content.
+     *
+     * @param string $str text to be processed
+     * @param string $starttag start tag pattern to be searched for
+     * @param string $endtag end tag for text to replace
+     * @param renderer $renderer - filter renderer
+     * @return a replacement text string
+     */
+    private function insert_content($str, $starttag, $endtag, $renderer) {
 
-    $newstring = $str;
-    // While we have the start tag in the text.
-    while (core_text::strpos($newstring, $starttag) !== false) {
-        $initpos = core_text::strpos($newstring, $starttag);
-        if ($initpos !== false) {
-            // Find the start of the string after the tag.
-            $pos = $initpos + core_text::strlen($starttag);
-            $endpos = core_text::strpos($newstring, $endtag);
-            // Extract the actual content between the tags.
-            $content = core_text::substr($newstring, $pos, $endpos - $pos);
-            // Clean the string.
-            $content = filter_var($content, FILTER_SANITIZE_STRING);
-            // Get the required content.
-            $newcontent = $renderer->get_content($content);
-            $newstring = substr_replace($newstring, $newcontent, $initpos,
-                $endpos - $initpos + core_text::strlen($endtag));
-            $initpos = $endpos + core_text::strlen($endtag);
+        $newstring = $str;
+        // While we have the start tag in the text.
+        while (core_text::strpos($newstring, $starttag) !== false) {
+            $initpos = core_text::strpos($newstring, $starttag);
+            if ($initpos !== false) {
+                // Find the start of the string after the tag.
+                $pos = $initpos + core_text::strlen($starttag);
+                $endpos = core_text::strpos($newstring, $endtag);
+                // Extract the actual content between the tags.
+                $content = core_text::substr($newstring, $pos, $endpos - $pos);
+                // Clean the string.
+                $content = htmlspecialchars(strip_tags($content));
+                // Get the required content.
+                $newcontent = $renderer->get_content($content);
+                $newstring = substr_replace($newstring, $newcontent, $initpos,
+                    $endpos - $initpos + core_text::strlen($endtag));
+                $initpos = $endpos + core_text::strlen($endtag);
+            }
         }
-    }
 
-    return $newstring;
+        return $newstring;
+    }
 }

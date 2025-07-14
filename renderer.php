@@ -16,8 +16,8 @@
 
 /**
  * Functions for inserting and displaying content
- * @package    filter
- * @subpackage simplefilter
+ *
+ * @package    filter_simplefilter
  * @copyright  2017 Richard Jones (https://richardnz.net/)
  * @copyright  2023 G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later

@@ -19,10 +19,10 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 3
 
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
-        php: ['7.4', '8.0']
-        moodle-branch: ['MOODLE_401_STABLE']
+        php: ['8.3']
+        moodle-branch: ['MOODLE_405_STABLE']
         database: [mariadb]
 
     steps:

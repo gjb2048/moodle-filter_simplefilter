@@ -13,11 +13,11 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * Strings for component 'filter_simplefilter', language 'en'
  *
- * @package    filter
- * @subpackage simplefilter
+ * @package    filter_simplefilter
  * @copyright  2019 Richard Jones https://richardnz.net
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
